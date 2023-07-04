@@ -19,7 +19,7 @@ export const AuthOptions = {
     //   from: 'NextAuth.js <no-reply@example.com>'
     // }),
   ],
-  secret: a1908f08aba88ee989adf9e0730a8c2e,
+  secret: "a1908f08aba88ee989adf9e0730a8c2e",
   adapter: MongoDBAdapter(clientPromise),
   callbacks: {
     session: ({ session, token, user }) => {
