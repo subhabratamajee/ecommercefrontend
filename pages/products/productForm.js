@@ -131,17 +131,17 @@ return newProperties;
         <select value={category} onChange={(e) => setCategory(e.target.value)}>
           <option value={""}>No Category Select</option>
           {categories.map((cat) => {
-            return <option value={cat?._id}>{cat?.catName}</option>;
+            return <option value={cat?._id} key={cat?._id}>{cat?.catName}</option>;
           })}
         </select>
-        {AllProperties.length>0 && AllProperties.map((prop)=>(
-          <div className="flex gap-2 flex-col">
+        {AllProperties.length>0 && AllProperties.map((prop,index)=>(
+          <div className="flex gap-2 flex-col" key={index}>
             
 
             <lable className="-mb-2 ">{prop.name}</lable>
             <select className="" value={productProperty[prop?.name]||""} onChange={(e)=>selectProperty(prop.name,e.target.value)}>
-              {prop.values.map((value) =>(
-                <option value={value}>{value}</option>
+              {prop.values.map((value,i) =>(
+                <option value={value} key={i}>{value}</option>
                 ))}
             </select>
           </div>

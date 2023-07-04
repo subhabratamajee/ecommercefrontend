@@ -5,14 +5,14 @@ import ProductForm from "../productForm";
 function Edit() {
   const [productData, setProductData] = useState([]);
   const router = useRouter();
-  const id = router.query.id;
+  const id = router?.query?.id;
   useEffect(() => {
     if (id) {
       axios
         .get("/api/products?id=" + id)
         .then((data) => setProductData(data.data));
     }
-  }, []);
+  }, [id]);
   return <ProductForm name={"Edit Product"} {...productData} />;
 }
 
