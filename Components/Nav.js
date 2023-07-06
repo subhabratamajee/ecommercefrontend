@@ -9,7 +9,7 @@ function Nav() {
   const active =
     "font-semibold flex md:bg-white md:text-blue-900  md:p-1 rounded-l-md flex-col md:flex-row -translate-y-5 md:-translate-y-0 ";
   const inactive = "flex md:p-1 flex-col md:flex-row ";
-  const iconActive="h-8 md:h-6  w-8 md:w-6 bottom-4 p-1 md:p-0   "
+  const iconActive="h-8 md:h-6  w-8 md:w-6 bottom-4 p-1 md:p-0    "
 
   // bg-blue-900 md:bg-white m-auto md:m-0  border-2 md:border-none rounded-full md:rounded-none
   const iconInactive="h-6 "
@@ -18,7 +18,7 @@ function Nav() {
     await signOut();
   }
   return (
-    <aside className="bg-blue-900 pl-0 md:pl-4 pt-1 md:pt-4 p-4 pr-0 h-8 md:h-full md:static fixed flex md:flex-col bottom-0 md:top-0 w-screen md:w-auto md:justify-start justify-center">
+    <aside className="bg-blue-900 pl-0 md:pl-4 pt-1 md:pt-4 p-4 pr-0 h-8 md:h-full  fixed flex md:static md:flex-col bottom-0 md:top-0  justify-center  md:justify-start">
       <div className=" mb-2 pr-2 font-semibold hidden md:flex   ">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -36,7 +36,7 @@ function Nav() {
         </svg>
         Ecommerce Admin
       </div>
-      <div className="flex md:flex-col md:gap-3  text-xs md:text-base justify-around w-screen md:w-auto  ">
+      <div className="flex flex-row md:flex-col md:gap-3  text-xs md:text-base justify-around w-screen md:w-auto  ">
         <Link href={"/"}>
           <div className={path === "/" ? active : inactive}>
             <svg
@@ -59,6 +59,7 @@ function Nav() {
         </Link>
         <Link href={"/products"}>
           <div className={path === "/products" ? active : inactive}>
+
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -66,15 +67,16 @@ function Nav() {
               strokeWidth="1.5"
               stroke="currentColor"
               className={path === "/products" ? iconActive : iconInactive}
-            >
+              >
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5m.75-9l3-3 2.148 2.148A12.061 12.061 0 0116.5 7.605"
-              />
+                />
             </svg>
             <div className={path === "/products" ? "round" : ""}></div>
             Products
+              
           </div>
         </Link>
         <Link href={"/categories"}>
