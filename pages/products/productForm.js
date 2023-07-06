@@ -161,7 +161,7 @@ return newProperties;
                     src={image}
                     key={index}
                     alt={image}
-                    className="sm:h-24 h-16 rounded-md"
+                    className=" h-16 sm:h-24 rounded-md"
                   />
                 );
               })}
