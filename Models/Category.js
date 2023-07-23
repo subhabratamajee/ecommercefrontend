@@ -8,7 +8,7 @@ const CategorySchema = new mongoose.Schema(
       required: [true, "Please provide the Category"],
     },
     parent: {
-      type: mongoose.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: "Category",
     },
     properties: [{ type: Object }],
@@ -16,5 +16,5 @@ const CategorySchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-export default mongoose.models.Category ||
-  mongoose.model("Category", CategorySchema);
+const Category = mongoose.model("Category", CategorySchema);
+module.exports = Category;

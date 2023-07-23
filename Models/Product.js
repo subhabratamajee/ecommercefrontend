@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-
+mongoose.Promise = global.Promise;
 const ProductSchema = new mongoose.Schema(
   {
     product: {
@@ -7,7 +7,7 @@ const ProductSchema = new mongoose.Schema(
       required: [true, "Please provide the  Product Name"],
     },
     category: {
-      type: mongoose.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       'ref':'Category',
     },
     properties: {
@@ -30,4 +30,5 @@ const ProductSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-export default mongoose.models.Product || mongoose.model("Product", ProductSchema);
+module.exports = mongoose.models.product || mongoose.model("product", ProductSchema);
+// module.exports = MyProduct;

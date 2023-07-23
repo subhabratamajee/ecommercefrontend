@@ -1,18 +1,32 @@
-import Layout from '@/Components/Layout'
-import { useSession } from 'next-auth/react'
-import React from 'react'
-import Image from 'next/image';
-
-function Home() {
-  const { data: session } = useSession();
+import Product from '@/Models/Product'
+import Banner from "@/Components/Banner";
+import Nav from "@/Components/Nav";
+import Image from "next/image";
+import dbConnect from '@/lib/mongoCon';
+import NewProducts from '@/Components/NewProducts';
+import React from 'react';
+export default function Home({newProducts}) {
+// console.log(newProducts);
+  
   return (
-    <Layout>
-      <div className='flex font-bold'>
-        Hello {session?.user?.name}
-        <div className=' absolute right-4 top-4' ><Image className=' right-0 t-0 rounded-full' width={30} height={30} src={session?.user.image} alt={"user"} /></div>
-      </div>
-    </Layout>
-  )
+    <main className="">
+      <Nav />
+      <Banner />
+      <NewProducts products={newProducts}/>
+    </main>
+  );
 }
-
-export default Home
+export async function getServerSideProps() {
+  await dbConnect();
+  const newProducts = await Product.find({}
+    , null, {
+    sort: { _id: -1 },
+    limit: 10,
+  });
+  // console.log(newProducts);
+  return {
+    props: {
+      newProducts: JSON.parse(JSON.stringify(newProducts)),
+    },
+  };
+}
